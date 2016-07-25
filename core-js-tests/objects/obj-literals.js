@@ -1,4 +1,11 @@
+'use strict';
+
+/* 
+	object literals and basic object properties
+*/
+
 const assert = require('assert');
+
 
 // define empty object literals
 var obj1 = {},  	 
@@ -32,7 +39,7 @@ assert.equal(coord2[propName], 7);
 
 // enumerating object properties
 var propString = '';
-for (prop in coord1) {
+for (var prop in coord1) {
 	propString +=prop;
 }
 assert.equal(propString, "xyz");
@@ -60,12 +67,13 @@ var invoice = {
 	]
 };
 
-// clone invoice
-var inv1 = Object.create(invoice);
 
+// nested property access
+assert.equal(invoice.customer.number, 123);
+assert.equal(invoice.items[1].product, "product-B");
 
-console.log(inv1.items);
-
-
+// nested property access: alterlative notation
+assert.equal(invoice["customer"]["name"], "John Doe");
+assert.equal(invoice["items"]["0"]["qty"], 10);
 
 

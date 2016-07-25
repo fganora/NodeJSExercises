@@ -1,15 +1,17 @@
+'use strict';
+
 /*
  * String methods
 */
 
-const assert = require('assert')
+const assert = require('assert');
 
 // aaccess to characters in strings
 assert.equal("hello"[2], "l")
 assert.equal("hello".charAt(1), "e")
 assert.equal("hello".charCodeAt(0), 104)
 
-//other methods 
+//other methods
 assert.equal("hello".concat(" Dolly"),"hello Dolly")
 assert.equal("hello".indexOf("ll"), 2);
 assert.equal("hello".lastIndexOf("l"), 3)
@@ -29,7 +31,7 @@ assert.equal("  hello  ".trimRight(), "  hello")
 assert.equal("  hello  ".trimLeft(), "hello  ")
 
 // array methods applied to Strings
-var str = "hello" 
+var str = "hello"
 var result = "-"
 
 assert.equal(Array.prototype.join.call(str, " "), "h e l l o")

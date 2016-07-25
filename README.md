@@ -1,4 +1,8 @@
 # NodeJSExercises
-Exercises in Node.js development
 
-This is the description of the project, which is very good.
+Simple test of ES6 and Node.js core fuctionality.
+
+These are based on Node v. 6.3.0, which implement virtually all of ES6 features.
+
+Tests are executed via Mocha and Chai.
+

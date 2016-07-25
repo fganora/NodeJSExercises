@@ -1,0 +1,28 @@
+{
+  "name": "node-js-exercises",
+  "version": "1.0.0",
+  "description": "Collection of test on Node.js 6 and ES6",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fganora/NodeJSExercises.git"
+  },
+  "keywords": [
+    "test",
+    "node6",
+    "es6"
+  ],
+  "author": "Francesco Ganora <francescoganora@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/fganora/NodeJSExercises/issues"
+  },
+  "homepage": "https://github.com/fganora/NodeJSExercises#readme",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3"
+  }
+}
