@@ -8,7 +8,8 @@ const assert = require('chai').assert;
 
 const testString = "hello";
 const longString = "The quick brown fox \
-jumped over the lazy dog"
+jumped over the lazy dog";
+const   name = 'John Smith';
 
 describe('Strings:', () => {
 
@@ -73,9 +74,6 @@ describe('Strings:', () => {
     it('search substring with lastIndexOf()', () => {
       assert.equal(testString.lastIndexOf("l"), 3);
     });
-    it('search substring with search(regexp)', () => {
-      assert.equal(testString.search("o$"), 4);
-    });
     it('startsWith()', () => {
       assert(testString.startsWith("h"));
     });
@@ -121,7 +119,7 @@ describe('Strings:', () => {
     });
   });
 
-  describe('Other string manipulation:', () => {
+  describe('Other string transformation:', () => {
     it('toLowerCase()', () => {
       assert.equal(testString.toLowerCase(), testString);
     });
@@ -131,12 +129,56 @@ describe('Strings:', () => {
     it('repeat()', () => {
       assert.equal(testString.repeat(3), "hellohellohello");
     });
+    it('URI encoding', () => {
+      assert.equal( encodeURI("https://mail.google.com/mail/u/0/#inbox/ 150d2cd10099655a"),
+        "https://mail.google.com/mail/u/0/#inbox/%20150d2cd10099655a" )
+    });
   });
 
   describe('String interpolation:', () => {
     it('${ ... }', () => {
       let action = "mess", state = "Texas";
       assert.equal(`Don't ${action} with ${state}!`, "Don't mess with Texas!");
+    });
+  });
+
+
+  describe('String parsing:', () => {
+    it('parseInt() decimal', () => {
+      assert.equal( parseInt("-0123", 10), -123 );
+    });
+    it('parseInt() binary', () => {
+      assert.equal(parseInt("100011101", 2), 285);
+    });
+    it('parseInt() hex', () => {
+      assert.equal(parseInt("0xff0", 16), 4080) ;
+    });
+    it('parseFloat() hex', () => {
+      assert.equal(parseFloat("-0.1509"), -0.1509) ;
+    });
+    it('parse malformed number --> NaN', () => {
+      assert.isNaN(parseInt("$150", 10)  )  ;
+    });
+    it('JSON parsing', () => {
+      assert.deepEqual( JSON.parse('{"a": "xyz", "b": [1,2,4]}'), {a: "xyz", b : [1,2,4]} )  ;
+    });
+  });
+
+
+  describe('String matching, extraction and manipulation via regular expressions:', () => {
+    let regexp = /(\w+)\s(\w+)/;
+
+    it('search substring with String.search()', () => {
+      assert.equal(testString.search("o$"), 4);
+    });
+    it('RegExp.exec()', () => {
+      assert.equal (regexp.exec(name)[2], "Smith");
+    });
+    it('RegExp.test()', () => {
+      assert(/l{2}/.exec(testString));
+    });
+     it('RegExp.replace()', () => {
+      assert.equal (name.replace(regexp, '$2, $1'), "Smith, John")
     });
   });
 
